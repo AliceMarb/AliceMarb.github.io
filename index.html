@@ -43,6 +43,10 @@
                 }
             }
         }
+
+        function displayHelp() {
+            alert("Please open the Arduino Serial Monitor. Look for the line that says 'This is the Arduino's IP: '.")
+        }
     </script>
 </head>
 
@@ -54,7 +58,7 @@
     <button onclick="conditionalRedirect()" class="connect-button button-text unavailable add-space" name="button">
         Connect
     </button>
-    <p class="second-option-text">Can't find IP address?</p>
+    <p onclick="displayHelp()" class="second-option-text">Can't find IP address?</p>
 </body>
 
 </html>
