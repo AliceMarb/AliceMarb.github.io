@@ -30,11 +30,11 @@
             if (!document.getElementsByName("button")[0].classList.contains('unavailable')) {
                 console.log("trying to connect!");
                 try {
-                    console.log("https://cors-anywhere.herokuapp.com/http://" + document.getElementById("ip").value);
-                    fetch("https://cors-anywhere.herokuapp.com/http://" + document.getElementById("ip").value)
+                    console.log("https://mighty-shore-85308.herokuapp.com/http://" + document.getElementById("ip").value);
+                    fetch("https://mighty-shore-85308.herokuapp.com/http://" + document.getElementById("ip").value)
                         .then(response => {
                             console.log(response);
-                            localStorage["address"] = "https://cors-anywhere.herokuapp.com/http://" +  document.getElementById("ip").value;
+                            localStorage["address"] = "https://mighty-shore-85308.herokuapp.com/http://" +  document.getElementById("ip").value;
                             document.location.href = "egg-connected.html"
                     })
                         .catch(error => alert("Can't connect to egg scrambler. Please try again."));
