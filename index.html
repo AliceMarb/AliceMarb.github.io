@@ -33,12 +33,16 @@
                     console.log("https://mighty-shore-85308.herokuapp.com/http://" + document.getElementById("ip").value);
                     fetch("https://mighty-shore-85308.herokuapp.com/http://" + document.getElementById("ip").value)
                         .then(response => {
-                            console.log(response);
-                            localStorage["address"] = "https://mighty-shore-85308.herokuapp.com/http://" +  document.getElementById("ip").value;
-                            document.location.href = "egg-connected.html"
-                    })
+                            if (response.ok) {
+                                console.log(response);
+                                localStorage["address"] = "https://mighty-shore-85308.herokuapp.com/http://" + document.getElementById("ip").value;
+                                document.location.href = "egg-connected.html"
+                            } else {
+                                alert("The egg scrambler could not connect.")
+                            }
+                        })
                         .catch(error => alert("Can't connect to egg scrambler. Please try again."));
-                } catch(e) {
+                } catch (e) {
                     alert("Can't connect to egg scrambler. Please try again.")
                 }
             }
