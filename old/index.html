@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="egg-design.css">
+    <script>
+        // document.getElementsByName("button")[0].addEventListener('change', makeAvailable);
+        document.addEventListener('input', function (evt) {
+            if (document.getElementById("ip").value != "") {
+                makeAvailable();
+            } else {
+                makeUnavailable();
+            }
+        });
+
+        function makeAvailable() {
+            document.getElementsByName("button")[0].classList.remove('unavailable');
+            document.getElementsByName("button")[0].classList.add('available');
+        }
+
+        function makeUnavailable() {
+            document.getElementsByName("button")[0].classList.add('unavailable');
+            document.getElementsByName("button")[0].classList.remove('available');
+        }
+
+        function conditionalRedirect() {
+            if (!document.getElementsByName("button")[0].classList.contains('unavailable')) {
+                console.log("trying to connect!");
+                try {
+                    console.log("https://mighty-shore-85308.herokuapp.com/http://" + document.getElementById("ip").value);
+                    fetch("https://mighty-shore-85308.herokuapp.com/http://" + document.getElementById("ip").value,
+                        {
+                            headers: {
+                                'Access-Control-Allow-Origin': '*',
+
+                            },
+                            // mode: "no-cors"
+                        })
+                        // console.log("https://mighty-shore-85308.herokuapp.com/iscorsneeded");
+                        // fetch("https://mighty-shore-85308.herokuapp.com/iscorsneeded")
+                        .then(response => {
+                            if (response.ok) {
+                                console.log(response);
+                                localStorage["address"] = "https://mighty-shore-85308.herokuapp.com/http://" + document.getElementById("ip").value;
+                                document.location.href = "egg-connected.html"
+                            } else {
+                                alert("The egg scrambler could not connect.")
+                            }
+                        })
+                        .catch(error => alert("Can't connect to egg scrambler. Please try again."));
+                } catch (e) {
+                    alert("Can't connect to egg scrambler. Please try again.")
+                }
+            }
+        }
+
+        function displayHelp() {
+            alert("Please open the Arduino Serial Monitor. Look for the line that says 'This is the Arduino's IP: '.")
+        }
+    </script>
+</head>
+
+<body>
+    <h1 class="header">Egg Scrambler</h1>
+    <p class="info">This is a project for CSCI1600 Real-Time and Embedded Systems at Brown University.</p>
+    <h2 class="info">To start, enter the egg scrambler's IP address</h2>
+    <input id="ip" class="input-box placeholder" placeholder="192.168.1.1"></input>
+    <button onclick="conditionalRedirect()" class="connect-button button-text unavailable add-space" name="button">
+        Connect
+    </button>
+    <p onclick="displayHelp()" class="second-option-text">Can't find IP address?</p>
+</body>
+
+</html>
