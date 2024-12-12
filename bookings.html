@@ -12,6 +12,10 @@
     <header>
         <nav>
             <ul>
+                <input type="checkbox" class="menu-toggle" id="menu-toggle">
+                <label for="menu-toggle" class="dropdown-btn">
+                    ☰
+                </label>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="bookings.html">Bookings</a></li>
                 <li>
@@ -19,6 +23,13 @@
                 </li>
                 <li><a href="auditions.html">Auditions</a></li>
                 <li><a href="performances.html">Performances</a></li>
+                <div class="dropdown">
+                    <ul class="dropdown-menu">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="auditions.html">Auditions</a></li>
+                        <li><a href="performances.html">Performances</a></li>
+                    </ul>
+                </div>
             </ul>
         </nav>
     </header>
@@ -130,6 +141,12 @@
                     margin-top: 20px;
                     font-size: 0.8rem;
                     color: #555;
+                }
+                
+                @media (max-width: 500px) {
+                    .container {
+                        display: block;
+                    }
                 }
             </style>
             <div class="container">

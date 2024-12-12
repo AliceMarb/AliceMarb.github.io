@@ -18,6 +18,9 @@ header {
     position: fixed;
     width: 100%;
     z-index: 1000;
+    /* ensures that padding + border are included in width calc. 
+    Otherwise 100% is greater than the size of the screen */
+    box-sizing: border-box;
 }
 
 nav ul {
@@ -49,6 +52,62 @@ nav ul li.logo span {
     font-weight: bold;
 }
 
+nav ul img {
+    width: 100%;
+}
+
+.auditions-iframe {
+    width: 100%;
+}
+
+
+/* Dropdown Styles */
+
+.dropdown {
+    display: none;
+    /* Hidden by default */
+    position: absolute;
+    /* Positioning dropdown */
+    top: 100%;
+    /* Align dropdown below logo */
+    left: 0;
+    width: 100%;
+    /* Full width of the screen */
+    background-color: #444;
+    /* Dark background */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    /* Shadow for depth */
+    transition: transform 0.3s ease-in-out;
+}
+
+.dropdown-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    /* Column layout */
+}
+
+.dropdown-menu li {
+    border-bottom: 1px solid #555;
+}
+
+.dropdown-menu li:last-child {
+    border-bottom: none;
+}
+
+.dropdown-menu li a {
+    text-decoration: none;
+    color: white;
+    padding: 10px 15px;
+    display: block;
+}
+
+.dropdown-menu li a:hover {
+    background-color: #555;
+}
+
 
 /* Hero section */
 
@@ -63,7 +122,7 @@ nav ul li.logo span {
 
 .hero img {
     width: 100%;
-    height: auto;
+    height: inherit;
     object-fit: cover;
     opacity: 0.8;
 }
@@ -162,4 +221,35 @@ html {
     /* Maintains aspect ratio */
     width: auto;
     /* Maintains aspect ratio */
+}
+
+
+/* Show menu when checkbox is checked */
+
+.menu-toggle {
+    display: none;
+}
+
+.menu-toggle:checked~.dropdown {
+    display: block;
+}
+
+.menu-toggle~.dropdown {
+    display: none;
+}
+
+@media (max-width: 500px) {
+    header ul {
+        flex: 1;
+    }
+    header ul li a {
+        display: none;
+        /* Hide items */
+    }
+}
+
+@media (min-width: 500px) {
+    .dropdown-btn {
+        display: none;
+    }
 }
