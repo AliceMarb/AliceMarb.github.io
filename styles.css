@@ -227,7 +227,7 @@ html {
 /* Show menu when checkbox is checked */
 
 .menu-toggle {
-    display: none !important;
+    display: none;
 }
 
 .menu-toggle:checked~.dropdown {
@@ -248,7 +248,7 @@ html {
     }
 }
 
-@media (min-width: 500px) {
+@media (min-width: 501px) {
     .dropdown-btn {
         display: none;
     }
