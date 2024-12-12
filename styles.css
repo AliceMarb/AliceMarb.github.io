@@ -227,7 +227,7 @@ html {
 /* Show menu when checkbox is checked */
 
 .menu-toggle {
-    display: none;
+    display: none !important;
 }
 
 .menu-toggle:checked~.dropdown {
