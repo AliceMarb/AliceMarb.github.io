@@ -1,0 +1,57 @@
+body {
+  font-family: "Crimson Pro", serif;
+  font-weight: 200;
+  font-style: normal;
+  font-size: clamp(1.5rem, 1.6vw, 1.8rem); 
+  line-height: 1.6;
+  margin: 0 auto;           
+  padding: 1rem;
+  color: #2c1235;
+  background-color: #f9f9f9;
+  max-width: 45ch; 
+}
+
+h1,
+h2 {
+  color: #8c338b;
+}
+
+aside p {
+  margin: 0 auto;
+}
+
+p {
+  line-height: calc(1.2ex / 0.32);
+  margin-bottom: 1.2em;
+}
+
+a {
+  color: #007acc;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center 10%; /* Moves the image down within the circle */
+  border: 2px solid #ccc;
+}
+
+@media (max-width: 600px) {
+  .header-content {
+    flex-direction: column; 
+    align-items: flex-start; 
+  }
+}
